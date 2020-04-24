@@ -5,6 +5,7 @@ login_manager = flask_login.LoginManager()
 
 
 app = Flask(__name__)
+app.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
 login_manager.init_app(app)
 
 
@@ -87,6 +88,10 @@ def logout():
 @flask_login.login_required
 def protected():
     return 'Logged in as: ' + flask_login.current_user.id
+
+@login_manager.unauthorized_handler
+def unauthorized_handler():
+    return 'Unauthorized'
 
 # def calc_similarity(arg)
 
