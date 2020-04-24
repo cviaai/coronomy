@@ -49,12 +49,26 @@ def request_loader(request):
 
     return user
 
-# index landing
+
 @app.route('/')
 def index():
     return render_template("index.html")
 
-# results
+@app.route('/register_com')
+def register_com():
+    return render_template("register_com.html")
+
+# @app.route('/register_person')
+# def register_person():
+#     return render_template("register_person.html")
+#
+# @app.route('/register_investor')
+# def register_person():
+#     return render_template("register_investor.html")
+
+
+
+
 
 # applicant_person
 # @app.route('/')
