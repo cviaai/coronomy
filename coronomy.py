@@ -3,10 +3,10 @@ import flask_login
 
 login_manager = flask_login.LoginManager()
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-app.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
-login_manager.init_app(app)
+application.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
+login_manager.init_app(application)
 
 # Users
 # People, companies, investors
@@ -50,11 +50,11 @@ def request_loader(request):
     return user
 
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template("index.html")
 
-@app.route('/register_com')
+@application.route('/register_com')
 def register_com():
     return render_template("register_com.html")
 
@@ -79,7 +79,7 @@ def register_com():
 # applicant_investor
 
 # LOGIN
-@app.route('/login', methods=['GET', 'POST'])
+@application.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template("login.html")
@@ -102,12 +102,12 @@ def login():
     return 'Bad login'
 
 # LOGOUT
-@app.route('/logout')
+@application.route('/logout')
 def logout():
     flask_login.logout_user()
     return 'Logged out'
 
-@app.route('/protected')
+@application.route('/protected')
 @flask_login.login_required
 def protected():
     return 'Logged in as: ' + flask_login.current_user.id
@@ -121,4 +121,4 @@ def unauthorized_handler():
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
