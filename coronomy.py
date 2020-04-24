@@ -68,13 +68,15 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return '''
-               <form action='login' method='POST'>
-                    <input type='text' name='email' id='email' placeholder='email'/>
-                    <input type='password' name='password' id='password' placeholder='password'/>
-                    <input type='submit' name='submit'/>
-               </form>
-               '''
+        return render_template("login.html")
+
+        # return '''
+        #        <form action='login' method='POST'>
+        #             <input type='text' name='email' id='email' placeholder='email'/>
+        #             <input type='password' name='password' id='password' placeholder='password'/>
+        #             <input type='submit' name='submit'/>
+        #        </form>
+        #        '''
 
     email = request.form['email']
     if request.form['password'] == users[email]['password']:
