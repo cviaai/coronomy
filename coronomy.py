@@ -3,19 +3,26 @@ import flask_login
 
 login_manager = flask_login.LoginManager()
 
-
 app = Flask(__name__)
+
 app.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
 login_manager.init_app(app)
 
+# Users
+# People, companies, investors
 
 # Mockup DB
-users = {'abc@d.io': {'password': 'secret'}}
+users = {'abc@d.io':
+             {'password': 'secret'}
+         }
 
 # USER CLASS
 class User(flask_login.UserMixin):
     pass
 
+# def company_similarity()
+
+#     return sim_company
 
 @login_manager.user_loader
 def user_loader(email):
@@ -63,9 +70,9 @@ def login():
     if request.method == 'GET':
         return '''
                <form action='login' method='POST'>
-                <input type='text' name='email' id='email' placeholder='email'/>
-                <input type='password' name='password' id='password' placeholder='password'/>
-                <input type='submit' name='submit'/>
+                    <input type='text' name='email' id='email' placeholder='email'/>
+                    <input type='password' name='password' id='password' placeholder='password'/>
+                    <input type='submit' name='submit'/>
                </form>
                '''
 
