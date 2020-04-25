@@ -136,31 +136,115 @@
         <section class="page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login</h2>
+                <br><br><br>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Register to apply for a job search</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                    <form>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                      </div>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                <form action='reg_person' method='POST'>
+
+                  <div class="form-row">
+                    <div class="col">
+                        <label class="mr-sm-2">Name</label>
+                      <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="col">
+                        <label class="mr-sm-2">Surname</label>
+                      <input type="text" class="form-control" placeholder="Surname">
+                    </div>
+                  </div><br>
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Password</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                        <label class="mr-sm-2">Age</label>
+                      <input type="number" class="form-control" placeholder="Age">
+                    </div>
+                    <div class="col">
+                        <label class="mr-sm-2">Telephone</label>
+                      <input type="tel" class="form-control" name="phone">
+                    </div>
+                  </div><br>
+                  <div class="form-row">
+                    <div class="col">
+                        <label class="mr-sm-2">Social link</label>
+                      <input type="text" class="form-control" placeholder="Social link">
+                    </div>
+                    <div class="col">
+                        <label class="mr-sm-2">Profession</label>
+                      <input type="text" class="form-control" placeholder="Profession">
+                    </div>
+                  </div>
+                    <br>
+                  <div class="form-row">
+                    <div class="col">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Education level</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Choose...</option>
+                            <option value="1">Primary</option>
+                            <option value="2">Secondary</option>
+                            <option value="3">College</option>
+                            <option value="4">BA</option>
+                            <option value="5">MSc</option>
+                            <option value="6">PhD</option>
+                            <option value="7">Other</option>
+                          </select>
+                    </div>
+                    <div class="col">
+                      <label class="mr-sm-2">Previous job</label>
+                      <input type="text" class="form-control" placeholder="Previous job">
+                    </div>
+                  </div><br>
+
+
+                  <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">How can you help? (if you have any equipment to share, technical space at home, tools)</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div><br>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Other info</label>
+                          <input class="form-control" id="inputEmail4" placeholder="Other info">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label>Readiness to work irrelevant to the main profession</label>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                            <option selected>Choose...</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                          </select>
+                        </div>
+                    </div><br>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        I give my consent to the collection, processing and storage of my personal data by the Coronomy app.
+                      </label>
+                    </div>
+                  </div>
+                  <input type='submit' name='submit' class="btn btn-primary" value="Register">
+                </form>
             </div>
         </section>
+
+
+
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
