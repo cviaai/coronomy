@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import flask_login
+import dash
+import dash_html_components as html
+import pandas as pd
+import numpy as np
+import json
 
 login_manager = flask_login.LoginManager()
 
@@ -7,6 +12,7 @@ application = Flask(__name__)
 
 application.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
 login_manager.init_app(application)
+
 
 # Users
 # People, companies, investors
@@ -67,9 +73,6 @@ def register_investor():
     return render_template("register_investor.html")
 
 
-
-
-
 # applicant_person
 # @app.route('/')
 # def index():
@@ -117,6 +120,7 @@ def unauthorized_handler():
     return 'Unauthorized'
 
 # def calc_similarity(arg)
+
 
 
 if __name__ == '__main__':

@@ -16,18 +16,18 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Coronomy</a><button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index#portfolio">Act now</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index#about">How it works</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{#        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">#}
+{#            <div class="container">#}
+{#                <a class="navbar-brand js-scroll-trigger" href="#page-top">Coronomy</a><button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>#}
+{#                <div class="collapse navbar-collapse" id="navbarResponsive">#}
+{#                    <ul class="navbar-nav ml-auto">#}
+{#                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index#portfolio">Act now</a></li>#}
+{#                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index#about">How it works</a></li>#}
+{#                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Login</a></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+{#        </nav>#}
 {#        <!-- Masthead-->#}
 {#        <header class="masthead bg-primary text-white text-center">#}
 {#            <div class="container d-flex align-items-center flex-column">#}
@@ -133,6 +133,7 @@
 {#            </div>#}
 {#        </section>#}
         <!-- Contact Section-->
+
         <section class="page-section" id="contact">
             <div class="container">
                 <!-- Contact Section Heading-->
@@ -144,32 +145,32 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <form action='reg_person' method='POST'>
+                <form action='/reg_person' method='POST'>
 
                   <div class="form-row">
                     <div class="col">
                         <label class="mr-sm-2">Name</label>
-                      <input type="text" class="form-control" placeholder="Name">
+                      <input type="text" class="form-control" placeholder="Name" name="name">
                     </div>
                     <div class="col">
                         <label class="mr-sm-2">Surname</label>
-                      <input type="text" class="form-control" placeholder="Surname">
+                      <input type="text" class="form-control" placeholder="Surname" name="surname">
                     </div>
                   </div><br>
                     <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="inputEmail4">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="col">
                         <label class="mr-sm-2">Age</label>
-                      <input type="number" class="form-control" placeholder="Age">
+                      <input type="number" class="form-control" placeholder="Age"  name="age">
                     </div>
                     <div class="col">
                         <label class="mr-sm-2">Telephone</label>
@@ -179,18 +180,18 @@
                   <div class="form-row">
                     <div class="col">
                         <label class="mr-sm-2">Social link</label>
-                      <input type="text" class="form-control" placeholder="Social link">
+                      <input type="text" class="form-control" placeholder="Social link"  name="social">
                     </div>
                     <div class="col">
                         <label class="mr-sm-2">Profession</label>
-                      <input type="text" class="form-control" placeholder="Profession">
+                      <input type="text" class="form-control" placeholder="Profession"  name="profession">
                     </div>
                   </div>
                     <br>
                   <div class="form-row">
                     <div class="col">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Education level</label>
-                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  name="education">
                             <option selected>Choose...</option>
                             <option value="1">Primary</option>
                             <option value="2">Secondary</option>
@@ -203,27 +204,30 @@
                     </div>
                     <div class="col">
                       <label class="mr-sm-2">Previous job</label>
-                      <input type="text" class="form-control" placeholder="Previous job">
+                      <input type="text" class="form-control" placeholder="Previous job" name="previous">
                     </div>
                   </div><br>
-
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Skills</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="skill"></textarea>
+                  </div><br>
 
                   <div class="form-group">
                     <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"  name="address">
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">How can you help? (if you have any equipment to share, technical space at home, tools)</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="help"></textarea>
                   </div><br>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="inputEmail4">Other info</label>
-                          <input class="form-control" id="inputEmail4" placeholder="Other info">
+                          <input class="form-control" id="inputEmail4" placeholder="Other info" name="infos">
                         </div>
                         <div class="form-group col-md-6">
                         <label>Readiness to work irrelevant to the main profession</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ready">
                             <option selected>Choose...</option>
                             <option value="1">Yes</option>
                             <option value="2">No</option>
@@ -238,7 +242,7 @@
                       </label>
                     </div>
                   </div>
-                  <input type='submit' name='submit' class="btn btn-primary" value="Register">
+                  <input type='submit' class="btn btn-primary" value="Register">
                 </form>
             </div>
         </section>
