@@ -143,30 +143,21 @@
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
-                <!-- Contact Section Form-->
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                        <form id="contactForm" name="sentMessage" novalidate="novalidate" action='login' method='POST'>
+                <!-- Contact Section Form OK-->
+                <form action='login' method='POST'>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type='text' name='email' id='email' placeholder='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
 
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Email Address</label><input class="form-control" type='text' name='email' id='email' placeholder='email' required="required" data-validation-required-message="Please enter your email address." />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Password</label><input class="form-control" type='password' name='password' id='password' required="required" placeholder='password' />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br />
-                            <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary btn-xl" type='submit' name='submit'>Send</button></div>
-                        </form>
-                    </div>
-                </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type='password' name='password' id='password' class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+
+                  <input type='submit' name='submit' class="btn btn-primary">Submit</input>
+                </form>
             </div>
         </section>
         <!-- Footer-->
