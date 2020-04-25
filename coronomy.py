@@ -58,13 +58,13 @@ def index():
 def register_com():
     return render_template("register_com.html")
 
-# @app.route('/register_person')
-# def register_person():
-#     return render_template("register_person.html")
+@application.route('/register_person')
+def register_person():
+    return render_template("register_person.html")
 #
-# @app.route('/register_investor')
-# def register_person():
-#     return render_template("register_investor.html")
+@application.route('/register_investor')
+def register_investor():
+    return render_template("register_investor.html")
 
 
 
@@ -117,7 +117,6 @@ def unauthorized_handler():
     return 'Unauthorized'
 
 # def calc_similarity(arg)
-
 
 
 if __name__ == '__main__':
