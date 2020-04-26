@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import flask_login
-
 from flask_sqlalchemy import SQLAlchemy
-
 import os
 import dash
 import dash_html_components as html
@@ -22,7 +20,6 @@ application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base
 db = SQLAlchemy(application)
 
 # Users
-
 # People, companies, investors
 
 # Mockup DB
@@ -63,9 +60,6 @@ def request_loader(request):
 
     return user
 
-@application.route('/index')
-def return_home():
-    return render_template("index.html")
 
 @application.route('/')
 def index():
@@ -124,17 +118,7 @@ def logout():
 @application.route('/protected')
 @flask_login.login_required
 def protected():
-
-    # if str("product") is in df
-    #     render companies list
-    # else if
-    #     str("flexibility")
-    #     s
-
     return 'Logged in as: ' + flask_login.current_user.id
-
-
-
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
@@ -319,16 +303,3 @@ def create_app():
 
 if __name__ == '__main__':
     application.run()
-
-# import sys
-#
-# import os
-#
-# INTERP = os.path.expanduser("/var/www/u1035123/data/flaskenv/bin/python")
-# if sys.executable != INTERP:
-#     os.execl(INTERP, INTERP, *sys.argv)
-#
-# sys.path.append(os.getcwd())
-#
-# from coronomy import application
-# # from hello import application
