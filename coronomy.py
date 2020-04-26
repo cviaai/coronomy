@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 import flask_login
 from flask_sqlalchemy import SQLAlchemy
 import os
+import dash
+import dash_html_components as html
+import pandas as pd
+import numpy as np
+import json
 
 login_manager = flask_login.LoginManager()
 
@@ -22,11 +27,9 @@ users = {'abc@d.io':
              {'password': 'secret'}
          }
 
-
 # USER CLASS
 class User(flask_login.UserMixin):
     pass
-
 
 # def company_similarity()
 
@@ -62,17 +65,13 @@ def request_loader(request):
 def index():
     return render_template("index.html")
 
-
 @application.route('/register_com')
 def register_com():
     return render_template("register_com.html")
 
-
 @application.route('/register_person')
 def register_person():
     return render_template("register_person.html")
-
-
 #
 @application.route('/register_investor')
 def register_investor():
@@ -110,19 +109,16 @@ def login():
 
     return 'Bad login'
 
-
 # LOGOUT
 @application.route('/logout')
 def logout():
     flask_login.logout_user()
     return 'Logged out'
 
-
 @application.route('/protected')
 @flask_login.login_required
 def protected():
     return 'Logged in as: ' + flask_login.current_user.id
-
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
