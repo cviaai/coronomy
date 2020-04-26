@@ -2,11 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import flask_login
 from flask_sqlalchemy import SQLAlchemy
 import os
-import dash
-import dash_html_components as html
-import pandas as pd
-import numpy as np
-import json
 
 login_manager = flask_login.LoginManager()
 
@@ -78,13 +73,7 @@ def register_investor():
     return render_template("register_investor.html")
 
 
-# applicant_person
-# @app.route('/')
-# def index():
-#     return render_template("index.html")
-# applicant_company
 
-# applicant_investor
 
 # LOGIN
 @application.route('/login', methods=['GET', 'POST'])
@@ -298,7 +287,7 @@ def create_app():
     with application.app_context():
         db.create_all()  # Create database tables for our data models
 
-    return "<html><head></head><body>FUCK YOU MOTHERFUCKER!!!!</body></html>"
+    return "<html><head></head><body>Test!!</body></html>"
 
 
 if __name__ == '__main__':
