@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 import flask_login
+
+from flask_sqlalchemy import SQLAlchemy
+
+import os
 import dash
 import dash_html_components as html
 import pandas as pd
@@ -13,6 +17,9 @@ application = Flask(__name__)
 application.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
 login_manager.init_app(application)
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
+db = SQLAlchemy(application)
 
 # Users
 # People, companies, investors
@@ -55,6 +62,9 @@ def request_loader(request):
 
     return user
 
+@application.route('/index')
+def return_home():
+    return render_template("index.html")
 
 @application.route('/')
 def index():
@@ -113,7 +123,17 @@ def logout():
 @application.route('/protected')
 @flask_login.login_required
 def protected():
+
+    # if str("product") is in df
+    #     render companies list
+    # else if
+    #     str("flexibility")
+    #     s
+
     return 'Logged in as: ' + flask_login.current_user.id
+
+
+
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
@@ -121,7 +141,193 @@ def unauthorized_handler():
 
 # def calc_similarity(arg)
 
+class Companies(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    com_name = db.Column(db.String(100), nullable=False)
+    surname = db.Column(db.String(100), nullable=False)
+    jobs_count = db.Column(db.Integer, nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
+    email = db.Column(db.String(30), nullable=False)
+    social = db.Column(db.String(100), nullable=True)
+    skill = db.Column(db.String(100), nullable=False)
+    address = db.Column(db.String(200), nullable=False)
+    product = db.Column(db.String(100), nullable=False)
+    resources_required = db.Column(db.String(500), nullable=True)
+    help = db.Column(db.String(500), nullable=True)
+    password = db.Column(db.String(20), nullable=False)
+
+    def __init__(self, com_name, surname, jobs_count, phone, email, social, skill, address, product,
+                 resources_required, help, password):
+        self.com_name = com_name
+        self.surname = surname
+        self.jobs_count = jobs_count
+        self.phone = phone
+        self.email = email
+        self.social = social
+        self.skill = skill
+        self.address = address
+        self.product = product
+        self.resources_required = resources_required
+        self.help = help
+        self.password = password
+
+
+com_keys = ["com_name", "surname", "jobs_count", "phone", "email", "social", "skill", "address",
+                "product", "resources_required", "help", "password"]
+
+mandatory_com_keys = ["com_name", "surname", "jobs_count", "phone", "email", "skill", "address",
+                "product", "resources_required", "password"]
+# endpoint to create a new user
+@application.route("/reg_com", methods=['GET', 'POST'])
+def add_company():
+    rf = request.form
+
+    empty = False
+    azz = None
+    for el in mandatory_com_keys:
+        try:
+            if not rf[el]:
+                empty = True
+                azz = el
+        except:
+            print("An exception occurred: " + str(el))
+    if empty:
+        return "<html><head></head><body>Please enter the necessary field " + azz + "</body></html>"
+
+
+    params = {}
+    values = []
+    for i in range(len(com_keys)):
+        try:
+            values.append(rf[com_keys[i]])
+        except:
+            print("An exception occurred: " + str(com_keys[i]))
+            print("An exception occurred: " + str(rf[com_keys[i]]))
+    print(values)
+    i=0
+    for kk in com_keys:
+        params.update({kk : values[i]})
+        i+=1
+    print(params)
+
+    company = Companies(**params)
+    db.session.add(company)
+    db.session.commit()
+
+    return "<html><head></head><body>'Record was successfully added'</body></html>"
+
+    #   render_template('index.html')
+
+
+class Employees(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    surname = db.Column(db.String(100), nullable=False)
+    age = db.Column(db.Integer, nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
+    email = db.Column(db.String(30), nullable=False)
+    social = db.Column(db.String(100), nullable=True)
+    profession = db.Column(db.String(100), nullable=False)
+    education = db.Column(db.Integer, nullable=False)
+    skill = db.Column(db.String(100), nullable=False)
+    address = db.Column(db.String(200), nullable=False)
+    previous = db.Column(db.String(100), nullable=False)
+    infos = db.Column(db.String(500), nullable=True)
+    ready = db.Column(db.Integer, nullable=False)
+    help = db.Column(db.String(500), nullable=True)
+    password = db.Column(db.String(20), nullable=False)
+
+    def __init__(self, name, surname, age, phone, email, social, profession, education, skill, address, previous,
+                 infos, ready, help, password):
+        self.name = name
+        self.surname = surname
+        self.age = age
+        self.phone = phone
+        self.email = email
+        self.social = social
+        self.profession = profession
+        self.education = education
+        self.skill = skill
+        self.address = address
+        self.previous = previous
+        self.infos = infos
+        self.ready = ready
+        self.help = help
+        self.password = password
+
+
+emp_keys = ["name", "surname", "age", "phone", "email", "social", "profession", "education", "skill", "address",
+                "previous", "infos", "ready", "help", "password"]
+
+mandatory_emp_key = ["name", "surname", "age", "phone", "email", "profession", "education", "skill", "address",
+                     "previous", "ready", "password"]
+
+# endpoint to create a new user
+@application.route("/reg_person", methods=['GET', 'POST'])
+def add_user():
+    rf = request.form
+
+    empty = False
+    azz = None
+    for el in mandatory_emp_key:
+        if not rf[el]:
+            empty = True
+            azz = el
+    if empty:
+        return "<html><head></head><body>Please enter the necessary field " + azz + "</body></html>"
+
+    params = {}
+    values = [rf[x] for x in emp_keys ]
+    i=0
+    for kk in emp_keys:
+        params.update({kk : values[i]})
+        i+=1
+    print(params)
+
+    employee = Employees(**params)
+
+    # employee = Employees(name=rf['name'], surname=rf['surname'], age=int(rf['age']),
+    #                      phone=rf['phone'], email=rf['email'], social=rf['social'],
+    #                      profession=rf['profession'], education=int(rf['education']), skill=rf['skill'],
+    #                      address=rf['address'], previous=rf['previous'], infos=rf['infos'],
+    #                      ready=int(rf['ready']), help=rf['help'], password=rf['password'])
+    db.session.add(employee)
+    db.session.commit()
+
+    return "<html><head></head><body>'Record was successfully added'</body></html>"
+
+    #   render_template('index.html')
+
+
+
+
+
+
+
+
+@application.route('/new_db')
+def create_app():
+    """Construct the core application."""
+    db.init_app(application)
+
+    with application.app_context():
+        db.create_all()  # Create database tables for our data models
+
+    return "<html><head></head><body>FUCK YOU MOTHERFUCKER!!!!</body></html>"
 
 
 if __name__ == '__main__':
     application.run()
+
+# import sys
+#
+# import os
+#
+# INTERP = os.path.expanduser("/var/www/u1035123/data/flaskenv/bin/python")
+# if sys.executable != INTERP:
+#     os.execl(INTERP, INTERP, *sys.argv)
+#
+# sys.path.append(os.getcwd())
+#
+# from coronomy import application
+# # from hello import application
