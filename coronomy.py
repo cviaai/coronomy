@@ -67,12 +67,18 @@ def register_com():
 @application.route('/register_person')
 def register_person():
     return render_template("register_person.html")
-#
+
+@application.route('/demo_invest')
+def demo_invest():
+    return render_template("demo_investor.html")
+
 @application.route('/register_investor')
 def register_investor():
     return render_template("register_investor.html")
 
-
+# @application.route('/protected')
+# def demo_person():
+#     return render_template("demo_person.html")
 
 
 # LOGIN
@@ -107,7 +113,8 @@ def logout():
 @application.route('/protected')
 @flask_login.login_required
 def protected():
-    return 'Logged in as: ' + flask_login.current_user.id
+    return render_template("demo_person.html") + flask_login.current_user.id
+    # return 'Logged in as: ' + flask_login.current_user.id
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
