@@ -3,9 +3,12 @@
 
 
 ## Coronomy
-Code the Curve submission
+# A UNESCO 'Code the Curve' Hackaton submission
+An online demo of the project is available at www.coronomy.online
 
-www.coronomy.online
+# Mission
+
+# Toolset
 
 ## Deploy on Heroku (free)
 First, edit the app.json and replace the value of the `repository`:
