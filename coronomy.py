@@ -128,7 +128,6 @@ def protected():
 def unauthorized_handler():
     return 'Unauthorized'
 
-
 # def calc_similarity(arg)
 
 class Companies(db.Model):
@@ -168,24 +167,34 @@ com_keys = ["com_name", "surname", "jobs_count", "phone", "email", "social", "sk
 mandatory_com_keys = ["com_name", "surname", "jobs_count", "phone", "email", "skill", "address",
                 "product", "resources_required", "password"]
 # endpoint to create a new user
-@application.route("/reg_company", methods=['GET', 'POST'])
+@application.route("/reg_com", methods=['GET', 'POST'])
 def add_company():
     rf = request.form
 
     empty = False
     azz = None
     for el in mandatory_com_keys:
-        if not rf[el]:
-            empty = True
-            azz = el
+        try:
+            if not rf[el]:
+                empty = True
+                azz = el
+        except:
+            print("An exception occurred: " + str(el))
     if empty:
         return "<html><head></head><body>Please enter the necessary field " + azz + "</body></html>"
 
 
     params = {}
-    values = [rf[x] for x in com_keys ]
+    values = []
+    for i in range(len(com_keys)):
+        try:
+            values.append(rf[com_keys[i]])
+        except:
+            print("An exception occurred: " + str(com_keys[i]))
+            print("An exception occurred: " + str(rf[com_keys[i]]))
+    print(values)
     i=0
-    for kk in emp_keys:
+    for kk in com_keys:
         params.update({kk : values[i]})
         i+=1
     print(params)
