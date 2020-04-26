@@ -22,6 +22,7 @@ application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(base
 db = SQLAlchemy(application)
 
 # Users
+
 # People, companies, investors
 
 # Mockup DB
