@@ -2,11 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import flask_login
 from flask_sqlalchemy import SQLAlchemy
 import os
-import dash
-import dash_html_components as html
-import pandas as pd
-import numpy as np
-import json
 
 login_manager = flask_login.LoginManager()
 
@@ -18,7 +13,8 @@ login_manager.init_app(application)
 application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://u1035123_test:u1035123_test@37.140.192.112/u1035123_default'
 db = SQLAlchemy(application)
 
-# Users# People, companies, investors
+# Users
+# People, companies, investors
 
 # Mockup DB
 users = {'abc@d.io':
@@ -70,19 +66,19 @@ def register_com():
 @application.route('/register_person')
 def register_person():
     return render_template("register_person.html")
-#
+
+@application.route('/demo_invest')
+def demo_invest():
+    return render_template("demo_investor.html")
+
 @application.route('/register_investor')
 def register_investor():
     return render_template("register_investor.html")
 
+# @application.route('/protected')
+# def demo_person():
+#     return render_template("demo_person.html")
 
-# applicant_person
-# @app.route('/')
-# def index():
-#     return render_template("index.html")
-# applicant_company
-
-# applicant_investor
 
 # LOGIN
 @application.route('/login', methods=['GET', 'POST'])
@@ -116,7 +112,8 @@ def logout():
 @application.route('/protected')
 @flask_login.login_required
 def protected():
-    return 'Logged in as: ' + flask_login.current_user.id
+    return render_template("demo_person.html") + flask_login.current_user.id
+    # return 'Logged in as: ' + flask_login.current_user.id
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
@@ -190,7 +187,6 @@ def add_company():
     print(params)
 
     company = Companies(**params)
-
     db.session.add(company)
     try:
         db.session.commit()
