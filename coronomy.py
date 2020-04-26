@@ -15,12 +15,10 @@ application = Flask(__name__)
 application.secret_key = 'k@2C#DGtOP#qO$;N6wUvXv3$:O/SpL'  # Change in production. Generated with Fort Knox
 login_manager.init_app(application)
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://u1035123_test:u1035123_test@37.140.192.112/u1035123_default'
 db = SQLAlchemy(application)
 
-# Users
-# People, companies, investors
+# Users# People, companies, investors
 
 # Mockup DB
 users = {'abc@d.io':
@@ -127,7 +125,7 @@ def unauthorized_handler():
 # def calc_similarity(arg)
 
 class Companies(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    companyID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     com_name = db.Column(db.String(100), nullable=False)
     surname = db.Column(db.String(100), nullable=False)
     jobs_count = db.Column(db.Integer, nullable=False)
@@ -168,17 +166,13 @@ def add_company():
     rf = request.form
 
     empty = False
-    azz = None
+    field = None
     for el in mandatory_com_keys:
-        try:
-            if not rf[el]:
-                empty = True
-                azz = el
-        except:
-            print("An exception occurred: " + str(el))
+        if not rf[el]:
+            empty = True
+            field = el
     if empty:
-        return "<html><head></head><body>Please enter the necessary field " + azz + "</body></html>"
-
+        return "<html><head></head><body>Please enter the necessary field " + field + "</body></html>"
 
     params = {}
     values = []
@@ -189,23 +183,24 @@ def add_company():
             print("An exception occurred: " + str(com_keys[i]))
             print("An exception occurred: " + str(rf[com_keys[i]]))
     print(values)
-    i=0
+    i = 0
     for kk in com_keys:
-        params.update({kk : values[i]})
-        i+=1
+        params.update({kk: values[i]})
+        i += 1
     print(params)
 
     company = Companies(**params)
+
     db.session.add(company)
-    db.session.commit()
-
-    return "<html><head></head><body>'Record was successfully added'</body></html>"
-
-    #   render_template('index.html')
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+    return "<html><head></head><body>'Record successfully added'</body></html>"
 
 
 class Employees(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    employeeID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     surname = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
@@ -244,7 +239,7 @@ class Employees(db.Model):
 emp_keys = ["name", "surname", "age", "phone", "email", "social", "profession", "education", "skill", "address",
                 "previous", "infos", "ready", "help", "password"]
 
-mandatory_emp_key = ["name", "surname", "age", "phone", "email", "profession", "education", "skill", "address",
+mandatory_emp_keys = ["name", "surname", "age", "phone", "email", "profession", "education", "skill", "address",
                      "previous", "ready", "password"]
 
 # endpoint to create a new user
@@ -253,16 +248,23 @@ def add_user():
     rf = request.form
 
     empty = False
-    azz = None
-    for el in mandatory_emp_key:
+    field = None
+    for el in mandatory_emp_keys:
         if not rf[el]:
             empty = True
-            azz = el
+            field = el
     if empty:
-        return "<html><head></head><body>Please enter the necessary field " + azz + "</body></html>"
+        return "<html><head></head><body>Please enter the necessary field " + field + "</body></html>"
 
     params = {}
-    values = [rf[x] for x in emp_keys ]
+    values = []
+    for i in range(len(emp_keys)):
+        try:
+            values.append(rf[emp_keys[i]])
+        except:
+            print("An exception occurred: " + str(emp_keys[i]))
+            print("An exception occurred: " + str(rf[emp_keys[i]]))
+    print(values)
     i=0
     for kk in emp_keys:
         params.update({kk : values[i]})
@@ -271,35 +273,14 @@ def add_user():
 
     employee = Employees(**params)
 
-    # employee = Employees(name=rf['name'], surname=rf['surname'], age=int(rf['age']),
-    #                      phone=rf['phone'], email=rf['email'], social=rf['social'],
-    #                      profession=rf['profession'], education=int(rf['education']), skill=rf['skill'],
-    #                      address=rf['address'], previous=rf['previous'], infos=rf['infos'],
-    #                      ready=int(rf['ready']), help=rf['help'], password=rf['password'])
     db.session.add(employee)
-    db.session.commit()
-
-    return "<html><head></head><body>'Record was successfully added'</body></html>"
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+    return "<html><head></head><body>'Record successfully added'</body></html>"
 
     #   render_template('index.html')
-
-
-
-
-
-
-
-
-@application.route('/new_db')
-def create_app():
-    """Construct the core application."""
-    db.init_app(application)
-
-    with application.app_context():
-        db.create_all()  # Create database tables for our data models
-
-    return "<html><head></head><body>FUCK YOU MOTHERFUCKER!!!!</body></html>"
-
 
 if __name__ == '__main__':
     application.run()
