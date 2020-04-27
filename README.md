@@ -30,7 +30,7 @@ PLatform takes the advantage of the intelligent AI-based planning and matching a
 <img src="/imgs/companies.png" width="600" alt>
 </p>
 <p align="center">
-<em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
+<em>Demo results fetched from the database based on the skills and location of a user.</em>
 </p>
 
 For a demo-login:
