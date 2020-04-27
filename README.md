@@ -4,7 +4,12 @@
 
 ## Coronomy
 # A UNESCO 'Code the Curve' Hackaton submission
-An online demo of the project is available at www.coronomy.online
+
+<p align="center">
+<img src="/imgs/logo.png" width="600" alt>
+</p>
+
+An online demo of the project is available at https://www.coronomy.online
 
 # Mission
 
