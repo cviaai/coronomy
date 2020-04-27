@@ -1,4 +1,4 @@
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Python](https://img.shields.io/badge/python-3.6-blue.svg)](https://python.org)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 
@@ -9,6 +9,14 @@ An online demo of the project is available at www.coronomy.online
 # Mission
 
 # Toolset
+### Installation as a project repository:
+
+```
+git clone https://github.com/coronomy.git
+```
+
+In this case, you need to manually install the dependencies.
+
 <p align="center">
 <img src="/imgs/map.jpg" width="600" alt>
 </p>
