@@ -13,11 +13,9 @@ An online demo of the project is available at https://www.coronomy.online
 
 # Mission
 
-Our solution is essentially a facebook for the unemployed and for the owners of the bankrupt companies. So that they can find each other.
+Our solution is essentially a facebook for the unemployed and for the owners of the bankrupt companies. So that they can find each other. Network will connect the job-seeking people and the sinking employers based on their reputation - the snapshot from just a couple of months ago.
 
-Our network will connect the job-seeking people and the sinking employers based on their reputation - the snapshot from just a couple of months ago.
-
-Through this database, venture capital and government recovery funds could find the matched pairs of employees and employers to revive the most important areas of the damaged economy.
+Through this database, venture capital and government recovery funds could find the matched pairs of employees and employers to revive the most important areas of the damaged economy. Service architecture is based on the Python-Flask framework and utilizes cloud solutions. As of today, we have an online-platform that features a web application, cloud-based model services and a MySQL database. 
 
 <p align="center">
 <img src="/imgs/map.jpg" width="600" alt>
@@ -25,6 +23,25 @@ Through this database, venture capital and government recovery funds could find 
 <p align="center">
 <em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
 </p>
+
+PLatform takes the advantage of the intelligent AI-based planning and matching algorithms such as the developed C-scoring system used to match the available resources of the nearby companies and would-be employees:
+
+<p align="center">
+<img src="/imgs/scoring.png" width="600" alt>
+</p>
+<p align="center">
+<em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
+</p>
+
+For a demo-login:
+```
+https://coronomy.online/login
+```
+With the following credentials:
+```
+Login: abc@d.io
+Password: secret
+```
 
 ## Installation as a project repository:
 
