@@ -1,4 +1,4 @@
-[![Python](https://img.shields.io/badge/python-3.6-blue.svg)](https://python.org)
+[![Python](https://img.shields.io/badge/python-3.7-blue.svg)](https://python.org)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 
