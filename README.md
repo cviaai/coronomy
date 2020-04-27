@@ -6,7 +6,7 @@
 # A UNESCO 'Code the Curve' Hackaton submission
 
 <p align="center">
-<img src="/imgs/logo.png" width="600" alt>
+<img src="/imgs/logo.png" width="100" alt>
 </p>
 
 An online demo of the project is available at https://www.coronomy.online
