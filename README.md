@@ -13,14 +13,11 @@ An online demo of the project is available at https://www.coronomy.online
 
 # Mission
 
-# Toolset
-### Installation as a project repository:
+Our solution is essentially a facebook for the unemployed and for the owners of the bankrupt companies. So that they can find each other.
 
-```
-git clone https://github.com/coronomy.git
-```
+Our network will connect the job-seeking people and the sinking employers based on their reputation - the snapshot from just a couple of months ago.
 
-In this case, you need to manually install the dependencies.
+Through this database, venture capital and government recovery funds could find the matched pairs of employees and employers to revive the most important areas of the damaged economy.
 
 <p align="center">
 <img src="/imgs/map.jpg" width="600" alt>
@@ -28,6 +25,16 @@ In this case, you need to manually install the dependencies.
 <p align="center">
 <em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
 </p>
+
+## Installation as a project repository:
+
+```
+git clone https://github.com/coronomy.git
+```
+
+In this case, you need to manually install the dependencies.
+
+
 
 ## Deploy on Heroku (free)
 First, edit the app.json and replace the value of the `repository`:
