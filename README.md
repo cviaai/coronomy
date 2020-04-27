@@ -27,7 +27,7 @@ Through this database, venture capital and government recovery funds could find 
 PLatform takes the advantage of the intelligent AI-based planning and matching algorithms such as the developed C-scoring system used to match the available resources of the nearby companies and would-be employees:
 
 <p align="center">
-<img src="/imgs/scoring.png" width="600" alt>
+<img src="/imgs/companies.png" width="600" alt>
 </p>
 <p align="center">
 <em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
