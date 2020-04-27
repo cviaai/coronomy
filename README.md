@@ -9,6 +9,12 @@ An online demo of the project is available at www.coronomy.online
 # Mission
 
 # Toolset
+<p align="center">
+<img src="/imgs/map.jpg" width="600" alt>
+</p>
+<p align="center">
+<em>Map of the companies experiencing difficulties with finance/salary payments/rent etc. during the COVID-19 pandemic.</em>
+</p>
 
 ## Deploy on Heroku (free)
 First, edit the app.json and replace the value of the `repository`:
