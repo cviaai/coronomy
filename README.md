@@ -3,6 +3,8 @@
 
 
 ## Coronomy
+A network for those people who lost their jobs due to COVID-19; those companies that went bankrupt; and those investors who want to help recover the economy.
+
 # A UNESCO 'Code the Curve' Hackaton submission
 
 <p align="center">
